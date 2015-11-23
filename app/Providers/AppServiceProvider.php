@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace GabilityPruebaBackEnd\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

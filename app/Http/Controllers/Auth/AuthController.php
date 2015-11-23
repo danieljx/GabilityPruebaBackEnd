@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace GabilityPruebaBackEnd\Http\Controllers\Auth;
 
-use App\User;
+use GabilityPruebaBackEnd\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use GabilityPruebaBackEnd\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

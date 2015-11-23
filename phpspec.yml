@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: App
-        psr4_prefix: App
+        namespace: GabilityPruebaBackEnd
+        psr4_prefix: GabilityPruebaBackEnd
         src_path: app
