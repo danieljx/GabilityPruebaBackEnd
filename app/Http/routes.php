@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+    // return view('welcome');
+// });
+
+Route::resource('/','CubeController@index');
+Route::resource('cube','CubeController@index');
+Route::resource('solve', 'CubeController@solve');
+Route::post('valid', 'CubeController@valid');

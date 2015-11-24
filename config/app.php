@@ -149,6 +149,11 @@ return [
          * Vendor Service Providers...
          */
 		Collective\Html\HtmlServiceProvider::class,
+		
+        /*
+         * Cube Service Providers...
+         */
+        GabilityPruebaBackEnd\Providers\SolverProviders::class,
     ],
 
     /*
@@ -203,6 +208,11 @@ return [
          */
 		'Form' => Collective\Html\FormFacade::class,
 		'Html' => Collective\Html\HtmlFacade::class,
+		
+        /*
+         * Cube Aliases...
+         */
+		'Solver' => GabilityPruebaBackEnd\Providers\SolverCube\Solver::class,
     ],
 
 ];
