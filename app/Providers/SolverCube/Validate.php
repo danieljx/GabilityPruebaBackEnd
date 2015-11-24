@@ -6,7 +6,7 @@ class Validate {
 	private $respose;
 	private $currentLine = 0;
 	private $currentTest = 0;
-	private $currentOper = 0;
+	private $currentOper = 1;
 	private $T;
 	private $N;
 	private $M;
@@ -39,6 +39,8 @@ class Validate {
 					//T
 					if(!$this->validTestCases($textSpace)) {
 						return $this->respose; 
+					} else {
+						$this->currentTest++;
 					}
 					$this->inN = true;
 				} else if($i != 0) {
@@ -54,12 +56,17 @@ class Validate {
 							return $this->respose;
 						}
 					} else {
-						$this->currentOper = 0;
+						$this->currentOper = 1;
 						$this->inN = true;
+						$i--;
+					}
+					if(!$this->respose["warning"] && $this->currentTest > 0 && $i == (count($this->arrayLines)-1)) {
+						$this->currentTest++;
 					}
 					$this->respose["warning"] = ($this->currentOper < $this->M);
 				}
 			}
+			$this->respose["warning"] = ($this->currentTest < $this->T);
 		} else {
 			$this->respose["error"] 	= true;
 			$this->respose["errorInfo"] = "Input Vacio";
