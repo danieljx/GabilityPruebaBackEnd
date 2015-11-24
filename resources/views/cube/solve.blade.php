@@ -57,7 +57,8 @@
 							</div>
 							<div class="panel-body">
 								<div class="alert alert-success hidden" role="alert" id="resposeValidate">
-									<strong id="resposeValidateText">Formato Correcto!</strong>
+									<strong id="resposeValidateLine"></strong>
+									<span id="resposeValidateText"></span>
 								</div>
 								<div class="form-group has-feedback" id="formGroupInput">
 									<div class="input-group">
@@ -173,24 +174,35 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 253px;"></texta
 						data: {"text" : $(this).val()},
 						dataType: 'json',
 						success: function (dataResp) {
-							$("div#formGroupInput").removeClass((dataResp.error?"has-success":"has-error")).addClass((dataResp.error?"has-error":"has-success"));
-							$("div#resposeValidate").removeClass((dataResp.error?"alert-success":"alert-danger")).removeClass("hidden").addClass((dataResp.error?"alert-danger":"alert-success"));
-							$("div#resposeValidate > strong").html(dataResp.errorText);
-							$('button#submitCode').prop('disabled', dataResp.error);
+							if(dataResp.error) {
+								$("div#formGroupInput").removeClass("has-success").removeClass("has-warning").addClass("has-error");
+								$("div#resposeValidate").removeClass("alert-success").removeClass("hidden").addClass("alert-danger");
+								$("div#resposeValidate > strong").html("Linea " + dataResp.errorLine + ": ");
+								$("div#resposeValidate > span").html(dataResp.errorInfo);
+								$('button#submitCode').prop('disabled', true);
+							} else if(dataResp.warning) {
+								$("div#formGroupInput").removeClass("has-success").removeClass("has-error").addClass("has-warning");
+								$("div#resposeValidate").addClass("hidden");
+								$('button#submitCode').prop('disabled', true);
+							} else {
+								$("div#formGroupInput").removeClass("has-error").removeClass("has-warning").addClass("has-success");
+								$("div#resposeValidate").addClass("hidden");
+								$('button#submitCode').prop('disabled', false);
+							}
 						},
 						error: function (data) {
 							alert("error");
 						}
 					});
 				} else {
-					$("div#formGroupInput").removeClass("has-success").removeClass("has-error");
+					$("div#formGroupInput").removeClass("has-success").removeClass("has-error").removeClass("has-warning");
 					$("div#resposeValidate").removeClass("alert-success").removeClass("alert-danger").addClass("hidden");
 					$("button#cleanCode").prop('disabled', true);
 				}
 			});
 			$('#cleanCode').on("click", function (e) {
 				$('#in').val("");
-				$("div#formGroupInput").removeClass("has-success").removeClass("has-error");
+				$("div#formGroupInput").removeClass("has-success").removeClass("has-error").removeClass("has-warning");
 				$("div#resposeValidate").removeClass("alert-success").removeClass("alert-danger").addClass("hidden");
 				$(this).prop('disabled', true);
 			});
