@@ -144,12 +144,12 @@ class Validate {
 	private function validUpdate($arrayText) {
 		$this->respose["warning"] = (count($arrayText) < 5);
 		if(!$this->respose["warning"]) {
-			for($u = 1; $u < (count($arrayText)-1); $u++) {
-				if(!is_numeric($arrayText[$u]) || $arrayText[$u] < 1 || $arrayText[$u] > $this->N) {
+			for($u = 1; $u < count($arrayText); $u++) {
+				if(!is_numeric($arrayText[$u]) || $arrayText[$u] < 1 || $arrayText[$u] > $this->N || $arrayText[$u]<-1000000000 || $arrayText[$u]>1000000000) {
 					$this->respose["error"] 	= true;
 					$this->respose["errorInfo"] = "Formato: UPDATE x y z w - cordenadas del cubo y el valor";
 					return false;
-				} else if($u == ((count($arrayText)-1)-1)) {
+				} else if($u == (count($arrayText)-1)) {
 					$this->currentOper++;
 				}
 			}

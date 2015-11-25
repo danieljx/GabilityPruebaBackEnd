@@ -31,8 +31,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="">
-						<strong>Cube</strong>Summation
+					<a class="navbar-brand" href="https://www.hackerrank.com/contests/101jan14/challenges/cube-summation">
+						<strong>Cube</strong>Summation::<strong>hackerrank<strong>
 					</a>
 				</div>
 				<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
@@ -213,6 +213,7 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 333px;"></texta
 				$('#in').val("");
 				$("div#formGroupInput").removeClass("has-success").removeClass("has-error").removeClass("has-warning");
 				$("div#resposeValidate").removeClass("alert-success").removeClass("alert-danger").addClass("hidden");
+				$('button#submitCode').prop('disabled', true);
 				$(this).prop('disabled', true);
 			});
 
