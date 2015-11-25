@@ -145,7 +145,11 @@ class Validate {
 		$this->respose["warning"] = (count($arrayText) < 5);
 		if(!$this->respose["warning"]) {
 			for($u = 1; $u < count($arrayText); $u++) {
-				if(!is_numeric($arrayText[$u]) || $arrayText[$u] < 1 || $arrayText[$u] > $this->N || $arrayText[$u]<-1000000000 || $arrayText[$u]>1000000000) {
+				if($u < 4 && (!is_numeric($arrayText[$u]) || $arrayText[$u] < 1 || $arrayText[$u] > $this->N)) {
+					$this->respose["error"] 	= true;
+					$this->respose["errorInfo"] = "Formato: UPDATE x y z w - cordenadas del cubo y el valor";
+					return false;
+				} else if($arrayText[$u]<-1000000000 || $arrayText[$u]>1000000000) {
 					$this->respose["error"] 	= true;
 					$this->respose["errorInfo"] = "Formato: UPDATE x y z w - cordenadas del cubo y el valor";
 					return false;
