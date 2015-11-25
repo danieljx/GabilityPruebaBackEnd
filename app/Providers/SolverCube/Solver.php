@@ -8,8 +8,8 @@ class Solver implements SolverContract {
 		$valid = new Validate($in);
 		return $valid->getResponse();
 	}
-	// public static function setStringCube($in) {
-		// $cube = new Cube($in);
-		// return $cube->getResponse();
-	// }
+	public static function setCube($in) {
+		$cube = new Cube($in);
+		return $cube->getResponse();
+	}
 }

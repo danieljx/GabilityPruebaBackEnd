@@ -44,6 +44,19 @@ class CubeController extends Controller
 	}
 
     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sum(Request $request)
+	{
+		if($request->ajax()) {
+			return json_encode(Solver::setCube($request->input('text')));
+		}
+	}
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

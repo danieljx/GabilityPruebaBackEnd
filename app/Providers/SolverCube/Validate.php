@@ -11,17 +11,18 @@ class Validate {
 	private $N;
 	private $M;
 	private $W;
+	private $inN;
 	
 	
 	public function __construct($text) {
 		$this->respose	  = Array("error" => false, "errorLine" => 0, "errorInfo" => null, "warning" => false);
-		$this->arrayLines = $this->textToArray($text);
+		$this->arrayLines = Validate::textToArray($text);
 		$this->validText();
 	}
 	public function getResponse() {
 		return $this->respose;
 	}
-	private function textToArray($text) {
+	public static function textToArray($text) {
 		$text = explode("\n", $text);
 		$text = array_filter($text);
 		$text = array_values($text);

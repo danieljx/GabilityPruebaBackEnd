@@ -76,7 +76,7 @@ QUERY 1 1 1 3 3 3
 UPDATE 2 2 2 1
 QUERY 1 1 1 1 1 1
 QUERY 1 1 1 2 2 2
-QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 253px;"></textarea>
+QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 333px;"></textarea>
 									</div>
 								</div>
 								<div class="container-fluid">
@@ -108,7 +108,7 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 253px;"></texta
 27
 0
 1
-1" id="out" name="out" style="margin: 0px; height: 129px;"></textarea>
+1" id="out" name="out" style="margin: 0px; height: 333px;"></textarea>
 									</div>
 								</div>
 							</div>
@@ -167,7 +167,6 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 253px;"></texta
 				if($(this).val().length > 0) {
 					$("button#cleanCode").prop('disabled', false);
 					$.ajax({
-						cache: false,
 						async: false,
 						type: "POST",
 						url: 'valid',
@@ -205,6 +204,28 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 253px;"></texta
 				$("div#formGroupInput").removeClass("has-success").removeClass("has-error").removeClass("has-warning");
 				$("div#resposeValidate").removeClass("alert-success").removeClass("alert-danger").addClass("hidden");
 				$(this).prop('disabled', true);
+			});
+
+			$('#submitCode').on("click", function () {
+				$.ajax({
+					async: false,
+					type: "POST",
+					url: 'sum',
+					data: {"text" : $('#in').val()},
+					dataType: 'json',
+					success: function (dataResp) {
+						if(dataResp.length > 0) {
+							text = "";
+							for(var i=0; i<dataResp.length; i++) {
+								text+= dataResp[i] + "\n";
+							}
+							$('#out').html(text);
+						}
+					},
+					error: function (data) {
+						alert("error");
+					}
+				});
 			});
 		});
 	</script>
