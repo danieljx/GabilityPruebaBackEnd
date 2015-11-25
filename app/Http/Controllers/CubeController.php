@@ -17,16 +17,6 @@ class CubeController extends Controller
      */
     public function index()
     {
-        return view('cube.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function solve()
-    {
         return view('cube.solve');
     }
 

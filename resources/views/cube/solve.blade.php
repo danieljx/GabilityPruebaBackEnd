@@ -21,29 +21,29 @@
 	<![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top navbar-primary">
-      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="https://twitter.com/danieljvx">@danieljvx</a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/solve">Solucion</a></li>
-          </ul>
-		  
-              <p class="navbar-text navbar-right">Cube Summation</p>
-        </div><!-- /.navbar-collapse -->
-      </div>
-    </nav>
+	<header>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">
+						<strong>Cube</strong>Summation
+					</a>
+				</div>
+				<div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+					<ul id="menu" class="nav navbar-nav navbar-right">
+						<li class="active">
+							<a href="http://twitter.com/danieljvx">@danieljvx</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</header>
 		<div class="container-fluid" style="margin-top: 80px;">
 			<div class="row">
 			<div id="contentModule" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
@@ -120,30 +120,40 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 333px;"></texta
 				<ul class="list-group">
 				  <li class="list-group-item clearfix">
 						<span class="pull-left">
-						<h4 class="list-group-item-heading">Cantidad de Pruebas</h4>
+						<h4 class="list-group-item-heading">Linea 1</h4>
 						</span>
 						<span class="pull-right">
-						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Número entero no mayor a 50.">
+						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="left" data-content="Cantidad de Test. Número entero no mayor a 50.">
 						  <span class="glyphicon glyphicon-info-sign"></span>
 						</button>
 						</span>
 				  </li>
 				  <li class="list-group-item clearfix">
 						<span class="pull-left">
-						<h4 class="list-group-item-heading">Tamaño del Cubo e interaciones</h4>
+						<h4 class="list-group-item-heading">Linea 2</h4>
 						</span>
 						<span class="pull-right">
-						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Dos Número entero separados por un espacio.">
+						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="left" data-content="Tamaño del Cubo e Interaciones con el. Dos Número entero separados por un espacio.">
 						  <span class="glyphicon glyphicon-info-sign"></span>
 						</button>
 						</span>
 				  </li>
 				  <li class="list-group-item clearfix">
 						<span class="pull-left">
-						<h4 class="list-group-item-heading">Interaciones</h4>
+						<h4 class="list-group-item-heading">Update</h4>
 						</span>
 						<span class="pull-right">
-						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="right" data-content="Query y/o Update.">
+						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="left" data-content="Interacion Update para cargar el cubo Formato: UPDATE x y z valor">
+						  <span class="glyphicon glyphicon-info-sign"></span>
+						</button>
+						</span>
+				  </li>
+				  <li class="list-group-item clearfix">
+						<span class="pull-left">
+						<h4 class="list-group-item-heading">Query</h4>
+						</span>
+						<span class="pull-right">
+						<button class="btn btn-xs btn-info" data-container="body" data-toggle="popover" data-placement="left" data-content="Interacion Query para buscar en un rango de cordenadas los valores y sumarlos en el cubo Formato: QUERY x y z x1 y1 z1">
 						  <span class="glyphicon glyphicon-info-sign"></span>
 						</button>
 						</span>
@@ -167,7 +177,7 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 333px;"></texta
 				if($(this).val().length > 0) {
 					$("button#cleanCode").prop('disabled', false);
 					$.ajax({
-						async: false,
+						async: true,
 						type: "POST",
 						url: 'valid',
 						data: {"text" : $(this).val()},
@@ -208,7 +218,7 @@ QUERY 2 2 2 2 2 2" id="in" name="in" style="margin: 0px; height: 333px;"></texta
 
 			$('#submitCode').on("click", function () {
 				$.ajax({
-					async: false,
+					async: true,
 					type: "POST",
 					url: 'sum',
 					data: {"text" : $('#in').val()},
